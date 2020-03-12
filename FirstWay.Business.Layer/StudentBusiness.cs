@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using FirstWay.Business.Layer.AM;
 using FirstWay.Common.Layer;
 using FirstWay.DataAccess.Layer.Interfaces;
@@ -16,6 +17,7 @@ namespace FirstWay.Business.Layer
 
         public Student Add(Student model)
         {
+            model.StudentGuid = Guid.NewGuid();
             return repository.Create(model);
         }
 

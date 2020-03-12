@@ -3,13 +3,13 @@ using FirstWay.DataAccess.Layer.Interfaces;
 
 namespace FirstWay.DataAccess.Layer.Utilities
 {
-    class ConnectionUtility : IConnectionUtility
+    class ConnectionUtility
     {
-        private readonly SqlConnection Connection;
+        public SqlConnection Connection { get; private set; }
 
         public ConnectionUtility()
         {
-            Connection = new SqlConnection();
+            Connection = new SqlConnection("Server=.;Database=Vueling;User Id=sa;Password=yourStrong(!)Password;");
         }
 
         public bool OpenConnection()
