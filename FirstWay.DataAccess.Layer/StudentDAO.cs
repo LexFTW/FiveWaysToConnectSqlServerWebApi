@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using FirstWay.Common.Layer;
 using FirstWay.DataAccess.Layer.Interfaces;
 using FirstWay.DataAccess.Layer.Utilities;
@@ -45,10 +46,14 @@ namespace FirstWay.DataAccess.Layer
             while (reader.Reader.Read())
             {
                 Student student = new Student();
-                student.StudentId = (int)reader.Reader["StudentId"];
-                student.Name = (string)reader.Reader["Name"];
-                student.Surname = (string)reader.Reader["Surname"];
-                student.Age = (int)reader.Reader["Age"];
+                try
+                {
+                    student.StudentId = (int)reader.Reader["StudentId"];
+                    student.Name = (string)reader.Reader["Name"];
+                    student.Surname = (string)reader.Reader["Surname"];
+                    student.Age = (int)reader.Reader["Age"];
+                }
+                catch (InvalidCastException e) { }
                 result.Add(student);
             }
 
@@ -70,10 +75,14 @@ namespace FirstWay.DataAccess.Layer
 
             while (reader.Reader.Read())
             {
-                student.StudentId = (int)reader.Reader["StudentId"];
-                student.Name = (string)reader.Reader["Name"];
-                student.Surname = (string)reader.Reader["Surname"];
-                student.Age = (int)reader.Reader["Age"];
+                try
+                {
+                    student.StudentId = (int)reader.Reader["StudentId"];
+                    student.Name = (string)reader.Reader["Name"];
+                    student.Surname = (string)reader.Reader["Surname"];
+                    student.Age = (int)reader.Reader["Age"];
+                }
+                catch (InvalidCastException e) { }
             }
 
             connection.CloseConnection();
@@ -84,7 +93,7 @@ namespace FirstWay.DataAccess.Layer
         {
             connection.OpenConnection();
 
-            var command = new CommandUtility<Student>("UPDATE Students SET (@Name, @Surname, @Age, @StudentGuid) WHERE StudentId = @id;", connection);
+            var command = new CommandUtility<Student>("UPDATE Students SET Name = @Name, Surname = @Surname, Age = @Age, StudentGuid = @StudentGuid WHERE StudentId = @id;", connection);
             command.AddParameter("@Name", model.Name);
             command.AddParameter("@Surname", model.Surname);
             command.AddParameter("@Age", model.Age);

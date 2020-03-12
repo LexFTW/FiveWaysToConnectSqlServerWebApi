@@ -41,10 +41,18 @@ namespace WebApiFirstWay.Controllers
         }
 
         [HttpPut]
-        public IHttpActionResult Update()
+        [Route("api/students/{id}/{name}/{surname}/{age}")]
+        public IHttpActionResult Update([FromUri] int id, [FromUri] string name, [FromUri] string surname, [FromUri] int age)
         {
             IBusiness<Student> business = new StudentBusiness();
-            var result = business.Update(new Student());
+            Student student = new Student();
+
+            student.StudentId = id;
+            student.Name = name;
+            student.Surname = surname;
+            student.Age = age;
+
+            var result = business.Update(student);
             return Ok(result);
         }
 

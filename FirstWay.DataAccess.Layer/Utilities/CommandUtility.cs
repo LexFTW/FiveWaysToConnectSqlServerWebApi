@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data.SqlClient;
 using System.IO;
-using FirstWay.Common.Layer;
 
 namespace FirstWay.DataAccess.Layer.Utilities
 {
@@ -30,11 +29,11 @@ namespace FirstWay.DataAccess.Layer.Utilities
             Command.Parameters.AddWithValue(id, value);
         }
 
-        public T ExecuteNonQuery()
+        public int ExecuteNonQuery()
         {
             try
             {
-                return (T)Command.ExecuteScalar();
+                return Command.ExecuteNonQuery();
             }
             catch (ObjectDisposedException)
             {
