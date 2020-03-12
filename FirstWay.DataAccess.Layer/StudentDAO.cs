@@ -32,6 +32,13 @@ namespace FirstWay.DataAccess.Layer
 
         public bool Delete(Student model)
         {
+            var command = new CommandUtility<Student>("DELETE FROM Students WHERE StudentId = @id", connection);
+            command.AddParameter("@Id", model.StudentId);
+
+            connection.OpenConnection();
+            command.ExecuteNonQuery();
+            connection.CloseConnection();
+
             return true;
         }
 

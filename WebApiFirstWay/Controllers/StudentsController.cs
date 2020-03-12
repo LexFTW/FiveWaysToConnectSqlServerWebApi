@@ -57,11 +57,16 @@ namespace WebApiFirstWay.Controllers
         }
 
         [HttpDelete]
-        public IHttpActionResult Delete()
+        [Route("api/students/{id}")]
+        public IHttpActionResult Delete([FromUri] int id)
         {
             IBusiness<Student> business = new StudentBusiness();
-            var result = business.Delete(new Student());
-            return Ok(result);
+            Student student = new Student();
+
+            student.StudentId = id;
+
+            var result = business.Delete(student);
+            return Ok(Get());
         }
     }
 }
