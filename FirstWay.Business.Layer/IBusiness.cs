@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace FirstWay.Business.Layer
 {
-    public interface IBusiness
+    public interface IBusiness<T>
     {
 
-
+        T Add(T model);
 
     }
 }

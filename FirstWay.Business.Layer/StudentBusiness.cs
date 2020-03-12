@@ -1,6 +1,15 @@
-﻿namespace FirstWay.Business.Layer
+﻿using FirstWay.Common.Layer;
+using FirstWay.DataAccess.Layer;
+using FirstWay.DataAccess.Layer.Interfaces;
+
+namespace FirstWay.Business.Layer
 {
-    class StudentBusiness : IBusiness
+    public class StudentBusiness : IBusiness<Student>
     {
+        public Student Add(Student model)
+        {
+            IRepository<Student> repository = new StudentDAO();
+            return repository.Create(model);
+        }
     }
 }

@@ -41,12 +41,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interfaces\IConnectionUtility.cs" />
     <Compile Include="Interfaces\ICreate.cs" />
     <Compile Include="Interfaces\IDelete.cs" />
     <Compile Include="Interfaces\IRead.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IUpdate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StudentDAO.cs" />
+    <Compile Include="Utilities\ConnectionUtility.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FirstWay.Common.Layer\FirstWay.Common.Layer.csproj">
+      <Project>{79b0d975-5ffd-4648-9aae-2558e7923f65}</Project>
+      <Name>FirstWay.Common.Layer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

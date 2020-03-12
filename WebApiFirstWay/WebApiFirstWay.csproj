@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\StudentsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -101,13 +102,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FirstWay.Business.Layer\FirstWay.Business.Layer.csproj">
       <Project>{1d1bdca3-25e7-41db-b6c0-eda4b8a961aa}</Project>
       <Name>FirstWay.Business.Layer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FirstWay.Common.Layer\FirstWay.Common.Layer.csproj">
+      <Project>{79b0d975-5ffd-4648-9aae-2558e7923f65}</Project>
+      <Name>FirstWay.Common.Layer</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

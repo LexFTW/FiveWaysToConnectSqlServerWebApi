@@ -46,6 +46,10 @@
     <Compile Include="StudentBusiness.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\FirstWay.Common.Layer\FirstWay.Common.Layer.csproj">
+      <Project>{79b0d975-5ffd-4648-9aae-2558e7923f65}</Project>
+      <Name>FirstWay.Common.Layer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FirstWay.DataAccess.Layer\FirstWay.DataAccess.Layer.csproj">
       <Project>{0d3c8c5a-7182-4356-9eda-fb0716fadc75}</Project>
       <Name>FirstWay.DataAccess.Layer</Name>
