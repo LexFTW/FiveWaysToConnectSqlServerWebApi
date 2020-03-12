@@ -9,14 +9,26 @@ namespace FirstWay.Business.Layer
     {
         public Student Add(Student model)
         {
-            IRepository<Student> repository = new StudentDAO();
+            IRepository<Student> repository = new StudentDao();
             return repository.Create(model);
         }
 
-        public List<Student> Get(Student model)
+        public bool Delete(Student model)
         {
-            IRepository<Student> repository = new StudentDAO();
+            IRepository<Student> repository = new StudentDao();
+            return repository.Delete(model);
+        }
+
+        public IEnumerable<Student> Get(Student model)
+        {
+            IRepository<Student> repository = new StudentDao();
             return repository.GetAll(model);
+        }
+
+        public Student Update(Student model)
+        {
+            IRepository<Student> repository = new StudentDao();
+            return repository.Update(1, model);
         }
     }
 }

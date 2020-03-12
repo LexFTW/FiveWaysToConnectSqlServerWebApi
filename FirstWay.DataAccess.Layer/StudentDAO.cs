@@ -5,7 +5,7 @@ using FirstWay.DataAccess.Layer.Interfaces;
 
 namespace FirstWay.DataAccess.Layer
 {
-    public class StudentDAO : IRepository<Student>
+    public class StudentDao : IRepository<Student>
     {
         public Student Create(Student model)
         {
@@ -14,22 +14,22 @@ namespace FirstWay.DataAccess.Layer
 
         public bool Delete(Student model)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
-        public List<Student> GetAll(Student model)
+        public IEnumerable<Student> GetAll(Student model)
         {
-            throw new NotImplementedException();
+            return new List<Student>();
         }
 
         public Student GetById(int id)
         {
-            throw new NotImplementedException();
+            return new Student();
         }
 
         public Student Update(int id, Student model)
         {
-            throw new NotImplementedException();
+            return model;
         }
     }
 }

@@ -20,7 +20,25 @@ namespace WebApiFirstWay.Controllers
         [HttpGet]
         public IEnumerable<Student> Get()
         {
-            return null;
+            IBusiness<Student> business = new StudentBusiness();
+            var result = business.Get(new Student());
+            return result;
+        }
+
+        [HttpPut]
+        public IHttpActionResult Update()
+        {
+            IBusiness<Student> business = new StudentBusiness();
+            var result = business.Update(new Student());
+            return Ok(result);
+        }
+
+        [HttpDelete]
+        public IHttpActionResult Delete()
+        {
+            IBusiness<Student> business = new StudentBusiness();
+            var result = business.Delete(new Student());
+            return Ok(result);
         }
     }
 }

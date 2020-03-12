@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using FirstWay.Common.Layer;
 
 namespace FirstWay.Business.Layer
 {
@@ -6,8 +7,8 @@ namespace FirstWay.Business.Layer
     {
 
         T Add(T model);
-
-        List<T> Get(T model);
-
+        IEnumerable<T> Get(T model);
+        T Update(T model);
+        bool Delete(T model);
     }
 }
