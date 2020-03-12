@@ -5,7 +5,7 @@ namespace FirstWay.DataAccess.Layer.Interfaces
     public interface IRead<T>
     {
 
-        IEnumerable<T> GetAll(T model);
+        IEnumerable<T> GetAll();
         T GetById(int id);
 
     }

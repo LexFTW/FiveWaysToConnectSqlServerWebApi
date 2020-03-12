@@ -1,13 +1,11 @@
-﻿using System;
-using System.Configuration;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
 using FirstWay.DataAccess.Layer.Interfaces;
 
 namespace FirstWay.DataAccess.Layer.Utilities
 {
     class ConnectionUtility : IConnectionUtility
     {
-        private SqlConnection Connection;
+        private readonly SqlConnection Connection;
 
         public ConnectionUtility()
         {
@@ -16,34 +14,14 @@ namespace FirstWay.DataAccess.Layer.Utilities
 
         public bool OpenConnection()
         {
-            try
-            {
-                Connection.Open();
-                return true;
-            }catch(InvalidOperationException exception)
-            {
-                throw;
-            }catch(SqlException exception)
-            {
-                throw;
-            }catch(ConfigurationException exception)
-            {
-                throw;
-            }
-            
+            Connection.Open();
+            return true;
         }
 
         public bool CloseConnection()
         {
-            try
-            {
-                Connection.Close();
-                return true;
-            }
-            catch (SqlException exception)
-            {
-                throw;
-            }
+            Connection.Close();
+            return true;
         }
     }
 }

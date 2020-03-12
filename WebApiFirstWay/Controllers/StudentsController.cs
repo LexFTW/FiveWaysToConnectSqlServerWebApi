@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
 using FirstWay.Business.Layer;
-using FirstWay.Common;
 using FirstWay.Common.Layer;
 
 namespace WebApiFirstWay.Controllers
@@ -27,20 +26,17 @@ namespace WebApiFirstWay.Controllers
         public IEnumerable<Student> Get()
         {
             IBusiness<Student> business = new StudentBusiness();
-            var result = business.Get(new Student());
+            var result = business.Get();
             return result;
         }
 
         [HttpGet]
         [Route("api/students/{id}")]
-        public IEnumerable<Student> Get([FromUri] int id)
+        public Student Get([FromUri] int id)
         {
             IBusiness<Student> business = new StudentBusiness();
-            Student student = new Student();
 
-            student.StudentId = id;
-
-            var result = business.Get(student);
+            var result = business.Get(id);
             return result;
         }
 

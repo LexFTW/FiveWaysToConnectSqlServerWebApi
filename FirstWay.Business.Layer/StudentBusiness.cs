@@ -1,33 +1,41 @@
 ﻿using System.Collections.Generic;
+using FirstWay.Business.Layer.AM;
 using FirstWay.Common.Layer;
-using FirstWay.DataAccess.Layer;
 using FirstWay.DataAccess.Layer.Interfaces;
 
 namespace FirstWay.Business.Layer
 {
-    public class StudentBusiness : IBusiness<Student>
+    public class StudentBusiness : IoCSupported<AutofacModule>, IBusiness<Student>
     {
+        private readonly IRepository<Student> repository;
+
+        public StudentBusiness()
+        {
+            repository = Resolve<IRepository<Student>>();
+        }
+
         public Student Add(Student model)
         {
-            IRepository<Student> repository = new StudentDao();
             return repository.Create(model);
         }
 
         public bool Delete(Student model)
         {
-            IRepository<Student> repository = new StudentDao();
             return repository.Delete(model);
         }
 
-        public IEnumerable<Student> Get(Student model)
+        public IEnumerable<Student> Get()
         {
-            IRepository<Student> repository = new StudentDao();
-            return repository.GetAll(model);
+            return repository.GetAll();
+        }
+
+        public Student Get(int id)
+        {
+            return repository.GetById(id);
         }
 
         public Student Update(Student model)
         {
-            IRepository<Student> repository = new StudentDao();
             return repository.Update(1, model);
         }
     }
