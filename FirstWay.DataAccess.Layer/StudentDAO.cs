@@ -19,7 +19,9 @@ namespace FirstWay.DataAccess.Layer
 
         public IEnumerable<Student> GetAll(Student model)
         {
-            return new List<Student>();
+            var students = new List<Student>();
+            students.Add(model);
+            return students;
         }
 
         public Student GetById(int id)

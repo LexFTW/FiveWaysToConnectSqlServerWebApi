@@ -10,10 +10,16 @@ namespace WebApiFirstWay.Controllers
     {
 
         [HttpPost]
-        public IHttpActionResult Add()
+        [Route("api/students/{name}/{surname}")]
+        public IHttpActionResult Add([FromUri] string name, [FromUri] string surname)
         {
             IBusiness<Student> business = new StudentBusiness();
-            var result = business.Add(new Student());
+            Student student = new Student();
+
+            student.Name = name;
+            student.Surname = surname;
+
+            var result = business.Add(student);
             return Ok(result);
         }
 
@@ -22,6 +28,19 @@ namespace WebApiFirstWay.Controllers
         {
             IBusiness<Student> business = new StudentBusiness();
             var result = business.Get(new Student());
+            return result;
+        }
+
+        [HttpGet]
+        [Route("api/students/{id}")]
+        public IEnumerable<Student> Get([FromUri] int id)
+        {
+            IBusiness<Student> business = new StudentBusiness();
+            Student student = new Student();
+
+            student.StudentId = id;
+
+            var result = business.Get(student);
             return result;
         }
 
