@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System.Collections.Generic;
+using System.Web.Http;
 using FirstWay.Business.Layer;
 using FirstWay.Common;
 using FirstWay.Common.Layer;
@@ -16,5 +17,10 @@ namespace WebApiFirstWay.Controllers
             return Ok(result);
         }
 
+        [HttpGet]
+        public IEnumerable<Student> Get()
+        {
+            return null;
+        }
     }
 }

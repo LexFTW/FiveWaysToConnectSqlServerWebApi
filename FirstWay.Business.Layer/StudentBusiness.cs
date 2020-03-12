@@ -1,4 +1,5 @@
-﻿using FirstWay.Common.Layer;
+﻿using System.Collections.Generic;
+using FirstWay.Common.Layer;
 using FirstWay.DataAccess.Layer;
 using FirstWay.DataAccess.Layer.Interfaces;
 
@@ -10,6 +11,12 @@ namespace FirstWay.Business.Layer
         {
             IRepository<Student> repository = new StudentDAO();
             return repository.Create(model);
+        }
+
+        public List<Student> Get(Student model)
+        {
+            IRepository<Student> repository = new StudentDAO();
+            return repository.GetAll(model);
         }
     }
 }
